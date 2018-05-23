@@ -6,9 +6,9 @@
     tools:context=".ListSoundReader">
 
     <android.support.v7.widget.RecyclerView
-    android:id="@+id/recycleViewSound"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+        android:id="@+id/recycle_view_sound"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

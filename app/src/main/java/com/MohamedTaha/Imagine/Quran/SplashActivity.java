@@ -1,8 +1,6 @@
 package com.MohamedTaha.Imagine.Quran;
 
-import android.app.Fragment;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -13,26 +11,22 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashActivity extends AppCompatActivity {
-    private static final int WAIT_TIME = 2500 ;
-    private Timer waitTimer ;
+
+    //variable for store WAIT_TIME ==2500
+    private static final int WAIT_TIME = 2500;
+    //define TextView
     TextView textShow;
-    Typeface nyTypeface ;
+    //variable for timer
+    private Timer waitTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-         NotificationHelper.sendNotificationEveryHalfDay(getApplicationContext());
-           NotificationHelper.enableBootRecieiver(getApplicationContext());
-      //  startService(new Intent(SplashActivity.this,ServiceToast.class));
-
-        textShow = (TextView) findViewById(R.id.textShow);
-        textShow.setTypeface(nyTypeface);
-        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.aminmation_splash);
-        textShow.startAnimation(animation);
-
-        waitTimer = new Timer();
+        //callback methos defineVariables()
+        defineVariables();
+        //for wait The Activity for 2500 seconds then start new Activity GridViewActivity
         waitTimer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -43,25 +37,28 @@ public class SplashActivity extends AppCompatActivity {
                     }
                 });
             }
-        },WAIT_TIME);
+        }, WAIT_TIME);
     }
-    private void  startSplashActivity(){
-        startActivity(new Intent(this,MainFragmentTab.class));
+
+    //method for start Activity after 2500 seconds
+    private void startSplashActivity() {
+        startActivity(new Intent(this, GridViewActivity.class));
         finish();
+    }
+
+    //method for define All variables
+    private void defineVariables() {
+        textShow = (TextView) findViewById(R.id.tv_show_text);
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.aminmation_splash);
+        textShow.startAnimation(animation);
+
+        waitTimer = new Timer();
     }
 
     @Override
     public void onBackPressed() {
-        //
+        //for disable button back
     }
-
-    @Override
-    public void onAttachFragment(Fragment fragment) {
-        super.onAttachFragment(fragment);
-        nyTypeface = Typeface.createFromAsset(getAssets(),"fonts/Mirza-SemiBold.ttf");
-    }
-
-
 }
 
 

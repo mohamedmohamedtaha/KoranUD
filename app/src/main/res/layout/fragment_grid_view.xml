@@ -1,33 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="@dimen/marginBottomTimeSound"
-    >
-    <TextView
-        android:layout_marginTop="@dimen/marginRightLeftSeekbar"
-        android:id="@+id/textViewShow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/marginRightLeftSeekbar"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/nameSheck"
-        android:textColor="@color/colorNameShekhFragment"/>
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
     <GridView
-        android:id="@+id/gridView"
-        android:paddingTop="@dimen/marginBottomTimeSound"
+        android:id="@+id/grid_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="@dimen/marginBottomTimeSound"
+        android:layout_below="@+id/textViewShow"
         android:columnWidth="@dimen/defultValueOneHalf"
-        android:horizontalSpacing="@dimen/marginBottomTimeSound"
-        android:stretchMode="columnWidth"
         android:gravity="center"
-        android:layout_below="@+id/textViewShow">
-    </GridView>
+        android:horizontalSpacing="@dimen/margin_bottom_time_sound"
+        android:numColumns="auto_fit"
+        android:paddingTop="@dimen/margin_bottom_time_sound"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/margin_bottom_time_sound"></GridView>
 
 </LinearLayout>

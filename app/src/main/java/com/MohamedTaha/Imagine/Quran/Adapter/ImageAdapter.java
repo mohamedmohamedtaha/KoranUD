@@ -16,34 +16,38 @@ import com.MohamedTaha.Imagine.Quran.R;
 
 import java.util.List;
 
-import static com.MohamedTaha.Imagine.Quran.Fragments.FragmentGridView.sheks_names;
+import static com.MohamedTaha.Imagine.Quran.GridViewActivity.sheks_names;
 
-/**
- * Created by MANASATT on 20/08/17.
- */
 
 public class ImageAdapter extends BaseAdapter {
-    private Context mContext;
-  //  String [] nameListReads;
-    private List<String> nameListReads;
-    public static final String SHEKH_ID ="shekh_id";
-    public static final String SHEKH_NAME ="shekh_name";
-    private String[] typeELtelawa;
-    int[] imageId ;
-    int []linkses;
 
+    //variable for store shekh_id
+    public static final String SHEKH_ID = "shekh_id";
+    //variable for store shekh_name
+    public static final String SHEKH_NAME = "shekh_name";
+    //variable for inflater
     private static LayoutInflater inflater = null;
+    //variable for imageId
+    int[] imageId;
+    //define Context
+    private Context mContext;
+    //  String [] nameListReads;
+    private List<String> nameListReads;
+    //variable for define  Array typeELtelawa
+    private String[] typeELtelawa;
 
     //Constructor
-    public ImageAdapter(Context context,  List<String> nameListRead, int [] nameImages,String[] typeELtelawa){
+    public ImageAdapter(Context context, List<String> nameListRead, int[] nameImages, String[] typeELtelawa) {
         this.nameListReads = nameListRead;
         this.mContext = context;
         this.imageId = nameImages;
         this.typeELtelawa = typeELtelawa;
-        inflater = (LayoutInflater)mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
     }
+
     @Override
     public int getCount() {
+        //for fill GridView by all data
         return nameListReads.size();
     }
 
@@ -56,52 +60,41 @@ public class ImageAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
+
     //Create a new ImageView for each item referenced by the Adapter
     @Override
     public View getView(final int position, final View convertView, ViewGroup parent) {
         Holder holder = new Holder();
         View rowView;
-        rowView = inflater.inflate(R.layout.custom_name_reader,null);
+        rowView = inflater.inflate(R.layout.custom_name_reader, null);
 
 
-        holder.tvShowname = (TextView) rowView.findViewById(R.id.textViewShow);
-        holder.img = (ImageView) rowView.findViewById(R.id.imageView);
-        holder.tvShowType =(TextView)rowView.findViewById(R.id.textTypeTlawa);
+        holder.tvShowname = (TextView) rowView.findViewById(R.id.tv_name_shekh);
+        holder.img = (ImageView) rowView.findViewById(R.id.image_shekh);
+        holder.tvShowType = (TextView) rowView.findViewById(R.id.tv_type_tlawa);
 
         holder.tvShowname.setText(nameListReads.get(position));
         holder.tvShowType.setText(typeELtelawa[position]);
 
         //setting the bitmap from the drawable folder
-        Bitmap bitmap= BitmapFactory.decodeResource(mContext.getResources(), imageId[position]);
+        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), imageId[position]);
         //set the image to the imageView
         holder.img.setImageBitmap(bitmap);
-     //   holder.img.setImageResource(imageId[position]);
+        //   holder.img.setImageResource(imageId[position]);
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //  Toast.makeText(mContext,"YOu Clicked " + nameListReads[position] +"\n"+imageId[position],Toast.LENGTH_LONG).show();
-               // Toast.makeText(mContext,"YOu Clicked " + sheks_names.get(position),Toast.LENGTH_LONG).show();
-
-                //Send  intent to SingleViewActivity
-              //  Intent i = new Intent(mContext,TestShowFullImage.class);
-              //  i.putExtra("id",position);
-              //  mContext.startActivity(i);
-                //__________________
-                Intent i = new Intent(mContext,ListSoundReader.class);
-                i.putExtra(SHEKH_ID,position);
-                i.putExtra(SHEKH_NAME,sheks_names.get(position));
+                Intent i = new Intent(mContext, ListSoundReader.class);
+                i.putExtra(SHEKH_ID, position);
+                i.putExtra(SHEKH_NAME, sheks_names.get(position));
                 mContext.startActivity(i);
-                // Toast.makeText(mContext,"YOu Clicked " + sheks_names.get(position),Toast.LENGTH_LONG).show();
-
-
-
-
             }
         });
         return rowView;
     }
-    public class Holder{
-        TextView tvShowname,tvShowType;
+
+    public class Holder {
+        TextView tvShowname, tvShowType;
         ImageView img;
     }
 }

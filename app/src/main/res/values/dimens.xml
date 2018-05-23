@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--size TextView MainActivity XML
-        -->
-    <dimen name="textSize">20sp</dimen>
-    <dimen name="textSizeTimeSound">15sp</dimen>
-    <dimen name="marginBottomTimeSound">10dp</dimen>
-    <dimen name="marginBottomTimeSoundXLarge">200dp</dimen>
+    <!--size TextView MainActivity XML -->
+    <dimen name="text_size_twenty">20sp</dimen>
+    <dimen name="text_size_time_sound">15sp</dimen>
+    <dimen name="margin_bottom_time_sound">10dp</dimen>
+    <dimen name="margin_bottom_time_sound_xlarge">200dp</dimen>
 
-    <dimen name="marginTopNameSora">15dp</dimen>
-    <dimen name="textSizeActionbar">18sp</dimen>
+    <dimen name="margin_top_name_sora">15dp</dimen>
+    <dimen name="text_size_actionbar">18sp</dimen>
 
     <!--size TextView ActionBar XML -->
-    <dimen name="textSizeActionBar">20sp</dimen>
-
-    <!--size TextView ActionBar XML  and size TextView MainActivity XML-->
-    <dimen name="textSizeNameSheck">10sp</dimen>
-
+    <dimen name="text_size_actionbar_twenty">20sp</dimen>
 
     <!--sizes Splash Activity XML   -->
-    <dimen name="layout_marginBottom">150dp</dimen>
-    <dimen name="testSizeTextShow">25sp</dimen>
-    <dimen name="testSizeTextShowXLarge">50sp</dimen>
-    <dimen name="testSizeTextShowLarge">35sp</dimen>
+    <dimen name="layout_margin_bottom">150dp</dimen>
+    <dimen name="text_size_show_text">25sp</dimen>
+    <dimen name="text_size_text_show_xlarge">50sp</dimen>
+    <dimen name="text_size_text_show_large">35sp</dimen>
 
 
     <!--sizes themeFloatButton  -->
-    <dimen name="marginLeftRightBottom">11dp</dimen>
-
+    <dimen name="margin_left_and_right_bottom">11dp</dimen>
 
 
     <!--sizes ImageView Equiliser  -->
@@ -35,13 +29,12 @@
     <dimen name="layout_height">30dp</dimen>
 
 
-
     <!--sizes songCurrentDurationLabel  -->
-    <dimen name="marginBottom">80dp</dimen>
-    <dimen name="marginRightEnd">10dp</dimen>
+    <dimen name="margin_bottom">80dp</dimen>
+    <dimen name="margin_right_end">10dp</dimen>
 
     <!--sizes seekbar in MainActivity  -->
-    <dimen name="marginRightLeftSeekbar">20dp</dimen>
+    <dimen name="margin_right_left_seek_bar">20dp</dimen>
     <dimen name="marginRightLeftSeekbarXLarge">50dp</dimen>
 
     <dimen name="paddingRightLeftSeekbar">6dp</dimen>
@@ -70,7 +63,6 @@
 
 
     <dimen name="sizeSeekbarProgress">5dip</dimen>
-
 
 
 </resources>

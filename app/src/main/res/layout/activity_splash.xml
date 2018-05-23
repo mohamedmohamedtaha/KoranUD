@@ -6,7 +6,7 @@
     tools:context="com.MohamedTaha.Imagine.Quran.SplashActivity">
 
     <TextView
-        android:id="@+id/textShow"
+        android:id="@+id/tv_show_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -14,8 +14,8 @@
         android:text="@string/textMain"
         android:textColor="@color/textColorTime"
         android:gravity="center"
-        android:layout_marginBottom="@dimen/layout_marginBottom"
-        android:textSize="@dimen/testSizeTextShow"
+        android:layout_marginBottom="@dimen/layout_margin_bottom"
+        android:textSize="@dimen/text_size_show_text"
         android:textStyle="bold"
         />
 

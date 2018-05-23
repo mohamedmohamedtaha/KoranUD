@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_right_end"
     android:background="@drawable/image_border"
-    android:padding="@dimen/defultValueFive"
     android:clickable="true"
-    android:layout_margin="@dimen/marginRightEnd">
+    android:orientation="vertical"
+    android:padding="@dimen/defultValueFive">
+
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/defultValueFive"
-        android:layout_marginBottom="@dimen/defultValueFive"
+        android:id="@+id/image_shekh"
         android:layout_width="match_parent"
         android:layout_height="@dimen/defultValueTowHandred"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/defultValueFive"
+        android:layout_marginTop="@dimen/defultValueFive"
         android:adjustViewBounds="true"
         android:contentDescription="@string/decriptionImage"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY" />
+
     <TextView
-        android:id="@+id/textViewShow"
-        android:textStyle="bold"
-        style="@style/themecustom_name_reader"
+        android:id="@+id/tv_name_shekh"
+        style="@style/theme_custom_name_reader"
         android:layout_weight="1"
         android:textColor="@color/colorButton"
+        android:textStyle="bold"
 
         />
+
     <TextView
-        android:id="@+id/textTypeTlawa"
-        style="@style/themecustom_name_reader"
+        android:id="@+id/tv_type_tlawa"
+        style="@style/theme_custom_name_reader"
         android:layout_weight="1"
-        android:textColor="@color/colorButton"
-        />
+        android:textColor="@color/colorButton" />
 
 </LinearLayout>

@@ -55,5 +55,7 @@
     <string name="no_found">السُّورَةُ غَيْرُ مَوْجُودَةٍ يَجِبُ تَحْمِيلُهَا أَوَّلَا</string>
     <string name="error_run">حدث خطأ في التشغيل</string>
 
+    <string name="type_tlawa">حفص عن عاصم</string>
+    <string name="type_tlawa_mgwad">المصحف المجود</string>
 
 </resources>

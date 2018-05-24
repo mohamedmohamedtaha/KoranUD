@@ -20,9 +20,12 @@ public class GridViewActivity extends AppCompatActivity {
             R.drawable.sherem, R.drawable.eltblawy, R.drawable.eldosary, R.drawable.elgeheny, R.drawable.mohamedgbrer,
             R.drawable.naserelqatamy, R.drawable.elagamy, R.drawable.elbana, R.drawable.elqarashy, R.drawable.elqasem, R.drawable.bder};
     //variable for store all type telawa in array
-    public static String[] mTypeELtelawa = {"حفص عن عاصم", "حفص عن عاصم", "حفص عن عاصم", "المصحف المجود", "المصحف المجود",
-            "حفص عن عاصم", "المصحف المجود", "حفص عن عاصم", "حفص عن عاصم", "حفص عن عاصم", "حفص عن عاصم", "حفص عن عاصم",
-            "حفص عن عاصم", "حفص عن عاصم", "حفص عن عاصم", "حفص عن عاصم", "حفص عن عاصم", "حفص عن عاصم", "حفص عن عاصم", "حفص عن عاصم"};
+    public  String[] mTypeELtelawa = {getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa),
+            getString(R.string.type_tlawa_mgwad),getString(R.string.type_tlawa_mgwad),getString(R.string.type_tlawa),
+            getString(R.string.type_tlawa_mgwad), getString(R.string.type_tlawa), getString(R.string.type_tlawa),
+            getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa),
+            getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa),
+            getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa)};
     // define ImageAdapter
     ImageAdapter imageAdapter;
     //define TextView for show the title

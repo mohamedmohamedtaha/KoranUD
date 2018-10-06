@@ -8,7 +8,6 @@ public class Utilities {
     public String milliSecondsToTimer(long milliSeconds){
         String finalTimerString = "";
         String secondsString = "";
-
         int hours = (int) (milliSeconds / (1000*60*60));
         int minutes = (int) (milliSeconds % (1000*60*60)) / (1000*60);
         int seconds = (int) ((milliSeconds % (1000*60*60)) % (1000*60) / 1000);
@@ -20,9 +19,7 @@ public class Utilities {
         }else {
             secondsString = "" + seconds ; }
             finalTimerString = finalTimerString + minutes + ":" + secondsString ;
-
         return finalTimerString;
-
     }
     public  int getProgressPercentage(long currentDuration, long totalDuration){
         Double percentage =(double)0;
@@ -35,9 +32,7 @@ public class Utilities {
         int currentDuration = 0 ;
         totalDuration = (int) (totalDuration / 1000);
         currentDuration = (int) ((((double)progress) / 100) * totalDuration);
-
         return currentDuration * 1000 ;
-
     }
 }
 

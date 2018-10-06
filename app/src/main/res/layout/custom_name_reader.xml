@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_right_end"
     android:background="@drawable/image_border"
-    android:clickable="true"
     android:orientation="vertical"
     android:padding="@dimen/defultValueFive">
 
@@ -23,7 +22,6 @@
         android:id="@+id/tv_name_shekh"
         style="@style/theme_custom_name_reader"
         android:layout_weight="1"
-        android:textColor="@color/colorButton"
         android:textStyle="bold"
 
         />
@@ -32,6 +30,6 @@
         android:id="@+id/tv_type_tlawa"
         style="@style/theme_custom_name_reader"
         android:layout_weight="1"
-        android:textColor="@color/colorButton" />
+        />
 
 </LinearLayout>

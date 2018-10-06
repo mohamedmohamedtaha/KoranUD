@@ -15,23 +15,11 @@ public class GridViewActivity extends AppCompatActivity {
     //define ArrayList for put name elmshayekh
     public static ArrayList<String> sheks_names;
     //variable for store all Images in array
-    public static int[] mThumbIds = {R.drawable.elsodes, R.drawable.elklbany, R.drawable.elmenshawy, R.drawable.elmenshawy,
-            R.drawable.abdeelbaset, R.drawable.elhosary, R.drawable.elhosary, R.drawable.almaqely, R.drawable.msharyelafasy,
-            R.drawable.sherem, R.drawable.eltblawy, R.drawable.eldosary, R.drawable.elgeheny, R.drawable.mohamedgbrer,
-            R.drawable.naserelqatamy, R.drawable.elagamy, R.drawable.elbana, R.drawable.elqarashy, R.drawable.elqasem, R.drawable.bder};
-    //variable for store all type telawa in array
-    public  String[] mTypeELtelawa = {getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa),
-            getString(R.string.type_tlawa_mgwad),getString(R.string.type_tlawa_mgwad),getString(R.string.type_tlawa),
-            getString(R.string.type_tlawa_mgwad), getString(R.string.type_tlawa), getString(R.string.type_tlawa),
-            getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa),
-            getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa),
-            getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa)};
-    // define ImageAdapter
+      //variable for store all type telawa in array
+     // define ImageAdapter
     ImageAdapter imageAdapter;
     //define TextView for show the title
     TextView textNameSorActionBar;
-    //define ArrayList for callback method getData()
-    ArrayList<String> resultEntities;
     //define GridView for put the Images
     private GridView gridViewImage;
 
@@ -48,6 +36,7 @@ public class GridViewActivity extends AppCompatActivity {
 
         //  callback method setAdapter()
         setAdapter();
+
     }
 
     //method for define The variables
@@ -59,7 +48,6 @@ public class GridViewActivity extends AppCompatActivity {
         textNameSorActionBar.setText(getString(R.string.nameSheck));
 
         sheks_names = new ArrayList<>();
-        resultEntities = new ArrayList<>();
 
         //link GridView defined by GridView in XML file
         gridViewImage = (GridView) findViewById(R.id.grid_view);
@@ -93,8 +81,20 @@ public class GridViewActivity extends AppCompatActivity {
 
     //method for define Adapter and put the data in GridView
     private void setAdapter() {
-        resultEntities = getData();
-        imageAdapter = new ImageAdapter(this, resultEntities, mThumbIds, mTypeELtelawa);
+         int[] mThumbIds  = {R.drawable.elsodes, R.drawable.elklbany, R.drawable.elmenshawy, R.drawable.elmenshawy,
+                R.drawable.abdeelbaset, R.drawable.elhosary, R.drawable.elhosary, R.drawable.almaqely, R.drawable.msharyelafasy,
+                R.drawable.sherem, R.drawable.eltblawy, R.drawable.eldosary, R.drawable.elgeheny, R.drawable.mohamedgbrer,
+                R.drawable.naserelqatamy, R.drawable.elagamy, R.drawable.elbana, R.drawable.elqarashy, R.drawable.elqasem, R.drawable.bder};
+
+        String[] mTypeELtelawa = {getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa),
+                getString(R.string.type_tlawa_mgwad),getString(R.string.type_tlawa_mgwad),getString(R.string.type_tlawa),
+                getString(R.string.type_tlawa_mgwad), getString(R.string.type_tlawa), getString(R.string.type_tlawa),
+                getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa),
+                getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa),
+                getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa), getString(R.string.type_tlawa)};
+
+
+        imageAdapter = new ImageAdapter(this, getData(), mThumbIds, mTypeELtelawa);
         gridViewImage.setAdapter(imageAdapter);
     }
 

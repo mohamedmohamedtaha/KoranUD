@@ -43,17 +43,13 @@ import static com.MohamedTaha.Imagine.Quran.Adapter.RecycleViewReaderAdapter.URL
 
 public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
 
-
     private static final String CMD_NAME = "command";
     private static final String CMD_PAUSE = "pause";
     private static final String CMD_STOP = "stop";
     private static final String CMD_PLAY = "play";
     //create File mediaStorageDir ,media_path
     static File mediaStorageDir, media_path;
-    //Jellybean
-    private static String SERVICE_CMD = "com.sec.android.app.music.musicservicecommand";
-    private static String PAUSE_SERVICE_CMD = "com.sec.android.app.music.musicservicecommand.pause";
-    private static String PLAY_SERVICE_CMD = "com.sec.android.app.music.musicservicecommand.play";
+
     //define ImageButton
     ImageButton button_paly;
     //define ImageView
@@ -82,11 +78,11 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     //define Handler
     private Handler handler = new Handler();
     //define  long
-    private long Music_DownloadId;
+    private long quran_DownloadId;
     private boolean mAudioFocusGranted = false;
     private boolean mAudioIsPlaying = false;
     private MediaPlayer mPlayer;
-    //define Runnable for set time elsong
+    //define Runnable for set time the Quarn
     private Runnable updateTimeTask = new Runnable() {
         @Override
         public void run() {
@@ -106,21 +102,13 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     private BroadcastReceiver mIntentReceiver;
     private boolean mReceiverRegistered = false;
 
-    //Honeycomb
-    {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-            SERVICE_CMD = "com.android.music.musicservicecommand";
-            PAUSE_SERVICE_CMD = "com.android.music.musicservicecommand.pause";
-            PLAY_SERVICE_CMD = "com.android.music.musicservicecommand.play";
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Intent i = getIntent();
+
         //for create folder by SHEKH_NAME
         FILENAME = "/" + i.getStringExtra(SHEKH_NAME) + "/";
 
@@ -187,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
                         mAudioFocusGranted = true;
 
                         resume();
-                        //  mPlayer.start();
                         startAnimation();
                         text_status.setText(R.string.text_play);
                         button_paly.setImageResource(R.drawable.pause);
@@ -361,11 +348,8 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         stop();
     }
 
-    ;
-
     //check Internet
     private void isNetworkConnected() {
-
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if (networkInfo == null) {
@@ -538,7 +522,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
                 reasonText = "filename:\n " + fileName;
                 break;
         }
-        if (downloadId == Music_DownloadId) {
+        if (downloadId == quran_DownloadId) {
             Toast toast = Toast.makeText(MainActivity.this, getString(R.string.FABStatusButton) + "\n"
                     + statusText + "\n" + reasonText, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.TOP, 25, 400);
@@ -552,16 +536,15 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         switch (v.getId()) {
             //Download KORAN
             case R.id.fab_download:
-                Music_DownloadId = DownloadData(music_uri, v);
+                quran_DownloadId = DownloadData(music_uri, v);
                 break;
-
             //Check the status of all downloads
             case R.id.fab_status:
-                check_Music_status(Music_DownloadId);
+                check_Music_status(quran_DownloadId);
                 break;
             //Cancel the ongoing download:
             case R.id.fab_cancel:
-                downloadManager.remove(Music_DownloadId);
+                downloadManager.remove(quran_DownloadId);
                 break;
 
         }
@@ -595,7 +578,6 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
                         updateProgressBar();
                         button_paly.setImageResource(R.drawable.pause);
                         text_status.setText(R.string.text_play);
-                        View loadingIndicator = findViewById(R.id.loading_indicator);
                         loadingIndicator.setVisibility(View.GONE);
                         button_paly.setEnabled(true);
                         seekBar.setEnabled(true);
@@ -608,11 +590,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
                         text_current_time.setText("");
                         stopAnimation();
                         button_paly.setImageResource(R.drawable.play);
-                        //   mAudioIsPlaying =false;
                         mAudioFocusGranted = false;
-
-                        //  abandonAudioFocus();
-                        //   forceMusicStop();
                     }
                 });
                 mPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
@@ -701,10 +679,9 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
                         text_current_time.setText("");
                         stopAnimation();
                         button_paly.setImageResource(R.drawable.play);
-                        //  mAudioIsPlaying =false;
                         mAudioFocusGranted = false;
-                        //  abandonAudioFocus();
-                        //   forceMusicStop();
+                          abandonAudioFocus();
+                           forceMusicStop();
                     }
                 });
                 mPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
@@ -769,7 +746,6 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     public void stop() {
         //1. stop play back
         if (mAudioFocusGranted && mAudioIsPlaying) {
-            // mPlayer.stop();
             mPlayer.release();
             mPlayer = null;
             mAudioIsPlaying = false;
@@ -816,10 +792,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         int result = am.abandonAudioFocus(mOnAudioFocusChangeListener);
         if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
             mAudioFocusGranted = false;
-        } else {
-            //FALID
         }
-        mOnAudioFocusChangeListener = null;
     }
 
     private void setupBroadcastReceiver() {
@@ -829,10 +802,10 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
                 String action = intent.getAction();
                 String cmd = intent.getStringExtra(CMD_NAME);
 
-                if (PAUSE_SERVICE_CMD.equals(action) || (SERVICE_CMD.equals(action) && CMD_PAUSE.equals(cmd))) {
+                if (CMD_NAME.equals(action) && CMD_PAUSE.equals(cmd)) {
                     play();
                 }
-                if (PLAY_SERVICE_CMD.equals(action) || (SERVICE_CMD.equals(action) && CMD_PLAY.equals(cmd))) {
+                if (CMD_NAME.equals(action) && CMD_PLAY.equals(cmd)) {
                     pause();
                 }
             }
@@ -840,9 +813,9 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         //Do the right thing when something else tries to play
         if (!mReceiverRegistered) {
             IntentFilter commandFilter = new IntentFilter();
-            commandFilter.addAction(SERVICE_CMD);
-            commandFilter.addAction(PAUSE_SERVICE_CMD);
-            commandFilter.addAction(PLAY_SERVICE_CMD);
+            commandFilter.addAction(CMD_NAME);
+            commandFilter.addAction(CMD_PAUSE);
+            commandFilter.addAction(CMD_PLAY);
             registerReceiver(mIntentReceiver, commandFilter);
             mReceiverRegistered = true;
         }
@@ -851,7 +824,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     private void forceMusicStop() {
         AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         if (am.isMusicActive()) {
-            Intent intentStop = new Intent(SERVICE_CMD);
+            Intent intentStop = new Intent(CMD_NAME);
             intentStop.putExtra(CMD_NAME, CMD_STOP);
             sendBroadcast(intentStop);
         }

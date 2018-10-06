@@ -64,22 +64,24 @@ public class ImageAdapter extends BaseAdapter {
     //Create a new ImageView for each item referenced by the Adapter
     @Override
     public View getView(final int position, final View convertView, ViewGroup parent) {
-        Holder holder = new Holder();
-        View rowView;
-        rowView = inflater.inflate(R.layout.custom_name_reader, null);
+        View rowView = convertView;
+        TextView tvShowname, tvShowType;
+        ImageView img;
+        if (rowView == null ){
+            rowView = inflater.inflate(R.layout.custom_name_reader, null);
+        }
 
+        tvShowname = (TextView) rowView.findViewById(R.id.tv_name_shekh);
+        tvShowType = (TextView) rowView.findViewById(R.id.tv_type_tlawa);
+        img = (ImageView) rowView.findViewById(R.id.image_shekh);
 
-        holder.tvShowname = (TextView) rowView.findViewById(R.id.tv_name_shekh);
-        holder.img = (ImageView) rowView.findViewById(R.id.image_shekh);
-        holder.tvShowType = (TextView) rowView.findViewById(R.id.tv_type_tlawa);
-
-        holder.tvShowname.setText(nameListReads.get(position));
-        holder.tvShowType.setText(typeELtelawa[position]);
+        tvShowname.setText(nameListReads.get(position));
+        tvShowType.setText(typeELtelawa[position]);
 
         //setting the bitmap from the drawable folder
         Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), imageId[position]);
         //set the image to the imageView
-        holder.img.setImageBitmap(bitmap);
+        img.setImageBitmap(bitmap);
         //   holder.img.setImageResource(imageId[position]);
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,8 +95,4 @@ public class ImageAdapter extends BaseAdapter {
         return rowView;
     }
 
-    public class Holder {
-        TextView tvShowname, tvShowType;
-        ImageView img;
-    }
-}
+ }

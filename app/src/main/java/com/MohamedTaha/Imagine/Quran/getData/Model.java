@@ -3,11 +3,13 @@ package com.MohamedTaha.Imagine.Quran.getData;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by MANASATT on 23/08/17.
  */
 
-public class Model implements Parcelable {
+public class Model {
     String sora_name;
     String sora_link;
 
@@ -26,38 +28,7 @@ public class Model implements Parcelable {
     public void setSora_link(String sora_link) {
         this.sora_link = sora_link;
     }
-    public Model() {
-
-    }
-    protected Model(Parcel in) {
-        this.sora_name = in.readString();
-        this.sora_link = in.readString();
-
-    }
-
-    public static final Creator<Model> CREATOR = new Creator<Model>() {
-        @Override
-        public Model createFromParcel(Parcel in) {
-            return new Model(in);
-        }
-
-        @Override
-        public Model[] newArray(int size) {
-            return new Model[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.sora_name);
-        dest.writeString(this.sora_link);
-    }
-}
+   }
 
 
 

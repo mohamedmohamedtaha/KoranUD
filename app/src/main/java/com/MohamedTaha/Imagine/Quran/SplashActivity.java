@@ -27,7 +27,15 @@ public class SplashActivity extends AppCompatActivity {
         //callback methos defineVariables()
         defineVariables();
         //for wait The Activity for 2500 seconds then start new Activity GridViewActivity
+
         waitTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                startSplashActivity();
+
+            }
+        },WAIT_TIME);
+       /* waitTimer.schedule(new TimerTask() {
             @Override
             public void run() {
                 SplashActivity.this.runOnUiThread(new Runnable() {
@@ -37,7 +45,7 @@ public class SplashActivity extends AppCompatActivity {
                     }
                 });
             }
-        }, WAIT_TIME);
+        }, WAIT_TIME);*/
     }
 
     //method for start Activity after 2500 seconds

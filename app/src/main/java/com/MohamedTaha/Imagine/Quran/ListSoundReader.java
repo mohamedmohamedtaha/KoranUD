@@ -28,16 +28,19 @@ import static com.MohamedTaha.Imagine.Quran.Adapter.RecycleViewReaderAdapter.URL
 
 
 public class ListSoundReader extends AppCompatActivity {
-    //  private List<Model> respones;
-    public static List<Model> respones;
+    //  private List<Model> models;
+    public static List<Model> models;
     //for define RecycleViewReaderAdapter
     RecycleViewReaderAdapter recycleViewAdaptor;
     //  private List<Model> model_list;
-    List<Model> model_list = new ArrayList<>();
     //variable for shekh_id
     int shekh_id;
     //Arrays for links el Qoran
-    String[] ArrayLinkYaserEldosary, ArrayLinkElhosaryMgwad, ArrayLinkElmenshawyHafs, ArrayLinkElmenshawyMgwad, ArrayLinkAbdlaElgeheny, ArrayLinkMAHER_ELMEAQLY, ArrayLinkAbdelbasetMgwad, ArrayLinkSoaadElsherem, ArrayLinkALTABLAWY, ArrayLinkElklbanyHafs, ArrayLinkElsodes, ArrayLinkMsharyElafasy, ArrayLinkElhosaryHAfs, ArrayLinkMohamedGbrer, ArrayLinkNaserElqatamy, ArrayLinkElagamy, ArrayLinkElbana, ArrayLinkElqarashy, ArrayLinkElqasem, ArrayLinkBder;
+    String[] ArrayLinkYaserEldosary, ArrayLinkElhosaryMgwad, ArrayLinkElmenshawyHafs, ArrayLinkElmenshawyMgwad,
+            ArrayLinkAbdlaElgeheny, ArrayLinkMAHER_ELMEAQLY, ArrayLinkAbdelbasetMgwad, ArrayLinkSoaadElsherem,
+            ArrayLinkALTABLAWY, ArrayLinkElklbanyHafs, ArrayLinkElsodes, ArrayLinkMsharyElafasy, ArrayLinkElhosaryHAfs,
+            ArrayLinkMohamedGbrer, ArrayLinkNaserElqatamy, ArrayLinkElagamy, ArrayLinkElbana, ArrayLinkElqarashy,
+            ArrayLinkElqasem, ArrayLinkBder;
     //define TextView
     TextView textNameSorActionBar;
     //for define RecyclerView
@@ -49,7 +52,7 @@ public class ListSoundReader extends AppCompatActivity {
         setContentView(R.layout.fragment_list_sound);
         //callback method  titleActionBar()
         titleActionBar();
-        respones = new ArrayList<>();
+        models = new ArrayList<>();
 
         //Intent for fetch shekh_id from GridViewActivity
         Intent i = getIntent();
@@ -58,41 +61,33 @@ public class ListSoundReader extends AppCompatActivity {
         //callback method defineVirable()
         defineVariable();
 
-
         recycleViewSound.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        respones = getShekhAyat(shekh_id);
-        recycleViewAdaptor = new RecycleViewReaderAdapter(getApplicationContext(), respones);
+        models = getShekhAyat(shekh_id);
+        recycleViewAdaptor = new RecycleViewReaderAdapter(getApplicationContext(), models);
         recycleViewSound.setAdapter(recycleViewAdaptor);
 
         //Action on RecycleView
         recycleViewSound.addOnItemTouchListener(new RecycleViewReaderAdapter.RecycleTouchListener(getApplicationContext(),
-                recycleViewSound, new RecycleViewReaderAdapter.ClickListener() {
+                 new RecycleViewReaderAdapter.ClickListener() {
             @Override
             public void onClick(View view, int position) {
                 Intent intent = new Intent(ListSoundReader.this, MainActivity.class);
-                intent.putExtra(NAME, respones.get(position).getSora_name());
-                intent.putExtra(URLLINK, respones.get(position).getSora_link());
+                intent.putExtra(NAME, models.get(position).getSora_name());
+                intent.putExtra(URLLINK, models.get(position).getSora_link());
                 intent.putExtra(SHEKH_NAME, getIntent().getStringExtra(SHEKH_NAME));
                 startActivity(intent);
             }
 
-            @Override
-            public void onLongClick(View view, int position) {
-                Intent intent = new Intent(ListSoundReader.this, MainActivity.class);
-                intent.putExtra(NAME, respones.get(position).getSora_name());
-                intent.putExtra(URLLINK, respones.get(position).getSora_link());
-                intent.putExtra(SHEKH_NAME, getIntent().getStringExtra(SHEKH_NAME));
-                startActivity(intent);
-            }
         }));
     }
 
     //define method for select specifect shekh
     private List<Model> getShekhAyat(int posision) {
-        String[] soar = null;
+        String[] soar = (getResources().getStringArray(R.array.name_allSwar));
+        List<Model> model_list = new ArrayList<>();
+
         switch (posision) {
             case 0:
-                soar = (getResources().getStringArray(R.array.name_allSwar));
                 for (int i = 0; i < soar.length; ++i) {
                     Model model = new Model();
                     model.setSora_name(soar[i]);
@@ -101,7 +96,6 @@ public class ListSoundReader extends AppCompatActivity {
                 }
                 break;
             case 1:
-                soar = (getResources().getStringArray(R.array.name_allSwar));
                 for (int i = 0; i < soar.length; ++i) {
                     Model model = new Model();
                     model.setSora_name(soar[i]);
@@ -110,7 +104,6 @@ public class ListSoundReader extends AppCompatActivity {
                 }
                 break;
             case 2:
-                soar = (getResources().getStringArray(R.array.name_allSwar));
                 for (int i = 0; i < soar.length; ++i) {
                     Model model = new Model();
                     model.setSora_name(soar[i]);
@@ -119,7 +112,6 @@ public class ListSoundReader extends AppCompatActivity {
                 }
                 break;
             case 3:
-                soar = (getResources().getStringArray(R.array.name_allSwar));
                 for (int i = 0; i < soar.length; ++i) {
                     Model model = new Model();
                     model.setSora_name(soar[i]);
@@ -128,7 +120,6 @@ public class ListSoundReader extends AppCompatActivity {
                 }
                 break;
             case 4:
-                soar = (getResources().getStringArray(R.array.name_allSwar));
                 for (int i = 0; i < soar.length; ++i) {
                     Model model = new Model();
                     model.setSora_name(soar[i]);
@@ -137,7 +128,6 @@ public class ListSoundReader extends AppCompatActivity {
                 }
                 break;
             case 5:
-                soar = (getResources().getStringArray(R.array.name_allSwar));
                 for (int i = 0; i < soar.length; ++i) {
                     Model model = new Model();
                     model.setSora_name(soar[i]);
@@ -146,7 +136,6 @@ public class ListSoundReader extends AppCompatActivity {
                 }
                 break;
             case 6:
-                soar = (getResources().getStringArray(R.array.name_allSwar));
                 for (int i = 0; i < soar.length; ++i) {
                     Model model = new Model();
                     model.setSora_name(soar[i]);
@@ -155,7 +144,6 @@ public class ListSoundReader extends AppCompatActivity {
                 }
                 break;
             case 7:
-                soar = (getResources().getStringArray(R.array.name_allSwar));
                 for (int i = 0; i < soar.length; ++i) {
                     Model model = new Model();
                     model.setSora_name(soar[i]);
@@ -164,7 +152,6 @@ public class ListSoundReader extends AppCompatActivity {
                 }
                 break;
             case 8:
-                soar = (getResources().getStringArray(R.array.name_allSwar));
                 for (int i = 0; i < soar.length; ++i) {
                     Model model = new Model();
                     model.setSora_name(soar[i]);
@@ -173,7 +160,6 @@ public class ListSoundReader extends AppCompatActivity {
                 }
                 break;
             case 9:
-                soar = (getResources().getStringArray(R.array.name_allSwar));
                 for (int i = 0; i < soar.length; ++i) {
                     Model model = new Model();
                     model.setSora_name(soar[i]);

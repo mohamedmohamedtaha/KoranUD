@@ -9,13 +9,12 @@
         android:id="@+id/grid_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewShow"
         android:columnWidth="@dimen/defultValueOneHalf"
         android:gravity="center"
-        android:horizontalSpacing="@dimen/margin_bottom_time_sound"
         android:numColumns="auto_fit"
         android:paddingTop="@dimen/margin_bottom_time_sound"
         android:stretchMode="columnWidth"
+        android:horizontalSpacing="@dimen/margin_bottom_time_sound"
         android:verticalSpacing="@dimen/margin_bottom_time_sound"></GridView>
 
 </LinearLayout>

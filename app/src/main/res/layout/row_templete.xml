@@ -39,7 +39,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/defultValueOne"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/image_view"
         android:background="@color/colorPrimaryDark" />
 
 </RelativeLayout>
